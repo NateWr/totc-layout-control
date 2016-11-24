@@ -172,6 +172,9 @@ class totclcInit {
 					break;
 
 				case 'posts-reviews' :
+					if ( !is_plugin_active( 'good-reviews-wp/good-reviews-wp.php' ) ) {
+						break;
+					}
 					$components['posts-reviews'] = array(
 						'file' => self::$plugin_dir . '/components/posts-reviews.php',
 						'class' => 'TOTCLC_Component_Reviews',
