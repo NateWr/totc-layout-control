@@ -126,54 +126,67 @@ class totclcInit {
 	 */
 	public function register_components( $components ) {
 
-		$components['content-block'] = array(
-			'file' => self::$plugin_dir . '/lib/content-layout-control/dist/components/content-block.php',
-			'class' => 'CLC_Component_Content_Block',
-			'name' => esc_html__( 'Content Block', 'totc-layout-control' ),
-			'description' => esc_html__( 'A simple content block with an image, title, text and links.', 'totc-layout-control' ),
-			'i18n' =>  array(
-				'title'                => esc_html__( 'Title', 'totc-layout-control' ),
-				'content'              => esc_html__( 'Content', 'totc-layout-control' ),
-				'image'                => esc_html__( 'Image', 'totc-layout-control' ),
-				'image_placeholder'    => esc_html__( 'No image selected', 'totc-layout-control' ),
-				'image_position'       => esc_html__( 'Image Position', 'totc-layout-control' ),
-				'image_position_left'  => esc_html__( 'Left', 'totc-layout-control' ),
-				'image_position_right' => esc_html__( 'Right', 'totc-layout-control' ),
-				'image_select_button'  => esc_html__( 'Select Image', 'totc-layout-control' ),
-				'image_change_button'  => esc_html__( 'Change Image', 'totc-layout-control' ),
-				'image_remove_button'  => esc_html__( 'Remove', 'totc-layout-control' ),
-				'links'                => esc_html__( 'Links', 'totc-layout-control' ),
-				'links_add_button'     => esc_html__( 'Add Link', 'totc-layout-control' ),
-				'links_remove_button'  => esc_html__( 'Remove', 'totc-layout-control' ),
-			),
-		);
+		$supported_components = $this->get_theme_support( 'components' );
 
-		$components['posts'] = array(
-			'file' => self::$plugin_dir . '/lib/content-layout-control/dist/components/posts.php',
-			'class' => 'CLC_Component_Posts',
-			'name' => esc_html__( 'Posts', 'totc-layout-control' ),
-			'description' => esc_html__( 'Display one or more posts.', 'totc-layout-control' ),
-			'limit_posts' => 3,
-			'i18n' =>  array(
-				'posts_loading'       => esc_html__( 'Loading', 'totc-layout-control' ),
-				'posts_remove_button' => esc_html__( 'Remove', 'totc-layout-control' ),
-				'placeholder'         => esc_html__( 'No post selected.', 'totc-layout-control' ),
-				'posts_add_button'    => esc_html__( 'Add Post', 'totc-layout-control' ),
-			),
-		);
+		foreach( $supported_components as $component ) {
+			switch( $component ) {
 
-		$components['posts-reviews'] = array(
-			'file' => self::$plugin_dir . '/components/posts-reviews.php',
-			'class' => 'TOTCLC_Component_Reviews',
-			'name' => esc_html__( 'Reviews', 'totc-layout-control' ),
-			'description' => esc_html__( 'Display one or more reviews.', 'totc-layout-control' ),
-			'i18n' =>  array(
-				'posts_loading'       => esc_html__( 'Loading', 'totc-layout-control' ),
-				'posts_remove_button' => esc_html__( 'Remove', 'totc-layout-control' ),
-				'placeholder'         => esc_html__( 'No review selected.', 'totc-layout-control' ),
-				'posts_add_button'    => esc_html__( 'Add Review', 'totc-layout-control' ),
-			),
-		);
+				case 'content-block' :
+					$components['content-block'] = array(
+						'file' => self::$plugin_dir . '/lib/content-layout-control/dist/components/content-block.php',
+						'class' => 'CLC_Component_Content_Block',
+						'name' => esc_html__( 'Content Block', 'totc-layout-control' ),
+						'description' => esc_html__( 'A simple content block with an image, title, text and links.', 'totc-layout-control' ),
+						'i18n' =>  array(
+							'title'                => esc_html__( 'Title', 'totc-layout-control' ),
+							'content'              => esc_html__( 'Content', 'totc-layout-control' ),
+							'image'                => esc_html__( 'Image', 'totc-layout-control' ),
+							'image_placeholder'    => esc_html__( 'No image selected', 'totc-layout-control' ),
+							'image_position'       => esc_html__( 'Image Position', 'totc-layout-control' ),
+							'image_position_left'  => esc_html__( 'Left', 'totc-layout-control' ),
+							'image_position_right' => esc_html__( 'Right', 'totc-layout-control' ),
+							'image_select_button'  => esc_html__( 'Select Image', 'totc-layout-control' ),
+							'image_change_button'  => esc_html__( 'Change Image', 'totc-layout-control' ),
+							'image_remove_button'  => esc_html__( 'Remove', 'totc-layout-control' ),
+							'links'                => esc_html__( 'Links', 'totc-layout-control' ),
+							'links_add_button'     => esc_html__( 'Add Link', 'totc-layout-control' ),
+							'links_remove_button'  => esc_html__( 'Remove', 'totc-layout-control' ),
+						),
+					);
+					break;
+
+				case 'posts' :
+					$components['posts'] = array(
+						'file' => self::$plugin_dir . '/lib/content-layout-control/dist/components/posts.php',
+						'class' => 'CLC_Component_Posts',
+						'name' => esc_html__( 'Posts', 'totc-layout-control' ),
+						'description' => esc_html__( 'Display one or more posts.', 'totc-layout-control' ),
+						'limit_posts' => 3,
+						'i18n' =>  array(
+							'posts_loading'       => esc_html__( 'Loading', 'totc-layout-control' ),
+							'posts_remove_button' => esc_html__( 'Remove', 'totc-layout-control' ),
+							'placeholder'         => esc_html__( 'No post selected.', 'totc-layout-control' ),
+							'posts_add_button'    => esc_html__( 'Add Post', 'totc-layout-control' ),
+						),
+					);
+					break;
+
+				case 'posts-reviews' :
+					$components['posts-reviews'] = array(
+						'file' => self::$plugin_dir . '/components/posts-reviews.php',
+						'class' => 'TOTCLC_Component_Reviews',
+						'name' => esc_html__( 'Reviews', 'totc-layout-control' ),
+						'description' => esc_html__( 'Display one or more reviews.', 'totc-layout-control' ),
+						'i18n' =>  array(
+							'posts_loading'       => esc_html__( 'Loading', 'totc-layout-control' ),
+							'posts_remove_button' => esc_html__( 'Remove', 'totc-layout-control' ),
+							'placeholder'         => esc_html__( 'No review selected.', 'totc-layout-control' ),
+							'posts_add_button'    => esc_html__( 'Add Review', 'totc-layout-control' ),
+						),
+					);
+					break;
+			}
+		}
 
 		return $components;
 	}
@@ -189,7 +202,7 @@ class totclcInit {
 			'content_layout_control',
 			array(
 				'capability' => 'edit_posts',
-				'title' => __( 'Homepage Editor', 'totc-layout-control' ),
+				'title' => $this->get_theme_support( 'control_title' ),
 			)
 		);
 
@@ -209,8 +222,8 @@ class totclcInit {
 				array(
 					'section' => 'content_layout_control',
 					'priority' => 1,
-					'components' => array( 'content-block', 'posts-reviews' ),
-					'active_callback' => array( 'totclcInit', 'active_callback' ),
+					'components' => $this->get_theme_support( 'components' ),
+					'active_callback' => $this->get_theme_support( 'active_callback' ),
 					'i18n' => array(
 						'add_component'                 => esc_html__( 'Add Component', 'clc-demo-theme' ),
 						'edit_component'                => esc_html__( 'Edit', 'clc-demo-theme' ),
@@ -276,6 +289,36 @@ class totclcInit {
 	public function enqueue_preview_assets() {
 		$min = SCRIPT_DEBUG ? '' : 'min.';
 		wp_enqueue_script( 'totclc-customizer-preview-js', self::$plugin_url . '/js/customizer-preview.' . $min . 'js', array( 'customize-preview', 'content-layout-preview-js' ), '0.1.0', true );
+	}
+
+	/**
+	 * Wrapper function for get_theme_support which queries specific support
+	 * params
+	 *
+	 * @param string $setting Key in array of theme support values
+	 * @since 0.1.0
+	 */
+	public function get_theme_support( $setting ) {
+
+		$supports = get_theme_support( 'totc-layout-control' );
+
+		$defaults = array(
+			'components' => array( 'content-block', 'posts-reviews' ),
+			'active_callback' => array( 'totclcInit', 'active_callback' ),
+			'control_title' => __( 'Homepage Editor', 'totc-layout-control' ),
+		);
+
+		if ( !$supports ) {
+			return isset( $defaults[$setting] ) ? $defaults[$setting] : null;
+		}
+
+		$supports = reset( $supports );
+
+		if ( isset( $supports[$setting] ) ) {
+			return $supports[$setting];
+		} elseif ( isset( $defaults[$setting] ) ) {
+			return $defaults[$setting];
+		}
 	}
 }
 
