@@ -15,9 +15,9 @@ module.exports = function(grunt) {
 					ieCompat: true
 				},
 				files: {
-					'assets/css/style.css': [
-						'assets/less/style.less',
-						'assets/less/style-*.less'
+					'css/style.css': [
+						'less/style.less',
+						'less/style-*.less'
 					]
 				}
 			}
@@ -37,7 +37,7 @@ module.exports = function(grunt) {
 		// Configure JSHint
 		jshint: {
 			test: {
-				src: 'assets/js/src/**/*.js'
+				src: 'js/src/**/*.js'
 			}
 		},
 
@@ -45,9 +45,13 @@ module.exports = function(grunt) {
 		concat: {
 			build: {
 				files: {
-					'assets/js/admin.js': [
-						'assets/js/src/admin.js',
-						'assets/js/src/admin-*.js'
+					'js/customizer-preview.js': [
+						'js/src/components/model/posts-reviews.js',
+						'js/src/components/preview/posts-reviews.js',
+					],
+					'js/customizer-control.js': [
+						'js/src/components/model/posts-reviews.js',
+						'js/src/components/control/posts-reviews.js',
 					]
 				}
 			}
@@ -60,7 +64,8 @@ module.exports = function(grunt) {
 			},
 			build: {
 				files: {
-					'assets/js/admin.min.js' : 'assets/js/admin.js'
+					'js/customizer-preview.min.js' : 'js/customizer-preview.js',
+					'js/customizer-control.min.js' : 'js/customizer-control.js'
 				}
 			}
 		},
@@ -68,11 +73,11 @@ module.exports = function(grunt) {
 		// Watch for changes on some files and auto-compile them
 		watch: {
 			less: {
-				files: ['assets/less/**/*.less'],
+				files: ['less/**/*.less'],
 				tasks: ['less', 'cssmin']
 			},
 			js: {
-				files: ['assets/js/src/**/*.js'],
+				files: ['js/src/**/*.js'],
 				tasks: ['jshint', 'concat', 'uglify']
 			}
 		},
@@ -103,7 +108,7 @@ module.exports = function(grunt) {
 							'!totc-layout-control-<%= pkg.version %>.zip',
 							'!.*', '!Gruntfile.js', '!package.json', '!node_modules', '!node_modules/**/*',
 							'!**/.*', '!**/Gruntfile.js', '!**/package.json', '!**/node_modules', '!**/node_modules/**/*',
-							'!assets/src', '!assets/src/**/*',
+							'!js/src', '!js/src/**/*',
 						],
 						dest: 'totc-layout-control/',
 					}

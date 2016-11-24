@@ -1,1 +1,5 @@
 node_modules
+js/customizer-control.js
+js/customizer-control.min.js
+js/customizer-preview.js
+js/customizer-preview.min.js

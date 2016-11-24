@@ -114,6 +114,8 @@ class totclcInit {
 		add_filter( 'customize_register', array( $this, 'customize_register' ) );
 		add_filter( 'clc_component_render_template_dirs', array( $this, 'add_render_template_dir' ) );
 		add_filter( 'clc_component_control_template_dirs', array( $this, 'add_control_template_dir' ) );
+		add_action( 'customize_controls_enqueue_scripts', array( $this, 'enqueue_control_assets' ) );
+		add_action( 'customize_preview_init', array( $this, 'enqueue_preview_assets' ) );
 	}
 
 	/**
@@ -160,6 +162,19 @@ class totclcInit {
 			),
 		);
 
+		$components['posts-reviews'] = array(
+			'file' => self::$plugin_dir . '/components/posts-reviews.php',
+			'class' => 'TOTCLC_Component_Reviews',
+			'name' => esc_html__( 'Reviews', 'totc-layout-control' ),
+			'description' => esc_html__( 'Display one or more reviews.', 'totc-layout-control' ),
+			'i18n' =>  array(
+				'posts_loading'       => esc_html__( 'Loading', 'totc-layout-control' ),
+				'posts_remove_button' => esc_html__( 'Remove', 'totc-layout-control' ),
+				'placeholder'         => esc_html__( 'No review selected.', 'totc-layout-control' ),
+				'posts_add_button'    => esc_html__( 'Add Review', 'totc-layout-control' ),
+			),
+		);
+
 		return $components;
 	}
 
@@ -194,7 +209,7 @@ class totclcInit {
 				array(
 					'section' => 'content_layout_control',
 					'priority' => 1,
-					'components' => array( 'content-block', 'posts' ),
+					'components' => array( 'content-block', 'posts-reviews' ),
 					'active_callback' => array( 'totclcInit', 'active_callback' ),
 					'i18n' => array(
 						'add_component'                 => esc_html__( 'Add Component', 'clc-demo-theme' ),
@@ -239,8 +254,28 @@ class totclcInit {
 	 * @since 0.1.0
 	 */
 	public function add_control_template_dir( $dirs ) {
-		array_unshift( $dirs, self::$plugin_dir . '/js/templates' );
+		array_unshift( $dirs, self::$plugin_dir . '/js/templates/components' );
 		return $dirs;
+	}
+
+	/**
+	 * Enqueue the assets required for the customizer control pane
+	 *
+	 * @since  0.1.0
+	 */
+	public function enqueue_control_assets() {
+		$min = SCRIPT_DEBUG ? '' : 'min.';
+		wp_enqueue_script( 'totclc-customizer-control-js', self::$plugin_url . '/js/customizer-control.' . $min . 'js', array( 'customize-controls', 'content-layout-control-js' ), '0.1.0', true );
+	}
+
+	/**
+	 * Enqueue the assets required for the customizer preview pane
+	 *
+	 * @since 0.1.0
+	 */
+	public function enqueue_preview_assets() {
+		$min = SCRIPT_DEBUG ? '' : 'min.';
+		wp_enqueue_script( 'totclc-customizer-preview-js', self::$plugin_url . '/js/customizer-preview.' . $min . 'js', array( 'customize-preview', 'content-layout-preview-js' ), '0.1.0', true );
 	}
 }
 
