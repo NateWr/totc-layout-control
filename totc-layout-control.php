@@ -112,6 +112,8 @@ class totclcInit {
 
 		add_filter( 'clc_register_components', array( $this, 'register_components' ) );
 		add_filter( 'customize_register', array( $this, 'customize_register' ) );
+		add_filter( 'clc_component_render_template_dirs', array( $this, 'add_render_template_dir' ) );
+		add_filter( 'clc_component_control_template_dirs', array( $this, 'add_control_template_dir' ) );
 	}
 
 	/**
@@ -217,6 +219,28 @@ class totclcInit {
 	 */
 	static public function active_callback() {
 		return is_page() && is_front_page();
+	}
+
+	/**
+	 * Add the directory for this plugin's component render templates
+	 *
+	 * @param array $dirs List of dirs to search in
+	 * @since 0.1.0
+	 */
+	public function add_render_template_dir( $dirs ) {
+		array_unshift( $dirs, self::$plugin_dir . '/components/templates' );
+		return $dirs;
+	}
+
+	/**
+	 * Add the directory for this plugin's component control templates
+	 *
+	 * @param array $dirs List of dirs to search in
+	 * @since 0.1.0
+	 */
+	public function add_control_template_dir( $dirs ) {
+		array_unshift( $dirs, self::$plugin_dir . '/js/templates' );
+		return $dirs;
 	}
 }
 
