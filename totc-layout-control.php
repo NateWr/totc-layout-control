@@ -24,8 +24,6 @@
  */
 defined( 'ABSPATH' ) || exit;
 
-
-
 class totclcInit {
 
 	/**
