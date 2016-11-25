@@ -204,6 +204,22 @@ class totclcInit {
 						),
 					);
 					break;
+
+				case 'opening-hours' :
+					if ( !is_plugin_active( 'business-profile/business-profile.php' ) ) {
+						break;
+					}
+					$components['opening-hours'] = array(
+						'file' => self::$plugin_dir . '/components/opening-hours.php',
+						'class' => 'TOTCLC_Component_Opening_Hours',
+						'name' => esc_html__( 'Opening Hours', 'totc-layout-control' ),
+						'limit_posts' => 1,
+						'description' => esc_html__( 'Display the opening hours from your Business Profile.', 'totc-layout-control' ),
+						'i18n'          => array(
+							'description' => sprintf( esc_html__( 'To change your opening hours, edit your %sBusiness Profile%s.', 'totc-layout-control' ), '<a href="' . esc_url( admin_url( 'admin.php?page=bpfwp-settings' ) ) . '">', '</a>' ),
+						),
+					);
+					break;
 			}
 		}
 
