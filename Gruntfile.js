@@ -46,16 +46,12 @@ module.exports = function(grunt) {
 			build: {
 				files: {
 					'js/customizer-preview.js': [
-						'js/src/components/model/posts-reviews.js',
-						'js/src/components/preview/posts-reviews.js',
-						'js/src/components/model/posts-pages.js',
-						'js/src/components/preview/posts-pages.js',
+						'js/src/components/model/*.js',
+						'js/src/components/preview/*.js',
 					],
 					'js/customizer-control.js': [
-						'js/src/components/model/posts-reviews.js',
-						'js/src/components/control/posts-reviews.js',
-						'js/src/components/model/posts-pages.js',
-						'js/src/components/control/posts-pages.js',
+						'js/src/components/model/*.js',
+						'js/src/components/control/*.js',
 					]
 				}
 			}
