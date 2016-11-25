@@ -189,6 +189,24 @@ class totclcInit {
 					);
 					break;
 
+				case 'posts-menus' :
+					if ( !is_plugin_active( 'food-and-drink-menu/food-and-drink-menu.php' ) ) {
+						break;
+					}
+					$components['posts-menus'] = array(
+						'file' => self::$plugin_dir . '/components/posts-menus.php',
+						'class' => 'TOTCLC_Component_Menus',
+						'name' => esc_html__( 'Restaurant Menu', 'totc-layout-control' ),
+						'description' => esc_html__( 'Display your restaurant menu.', 'totc-layout-control' ),
+						'i18n' =>  array(
+							'posts_loading'       => esc_html__( 'Loading', 'totc-layout-control' ),
+							'posts_remove_button' => esc_html__( 'Remove', 'totc-layout-control' ),
+							'placeholder'         => esc_html__( 'No menu selected.', 'totc-layout-control' ),
+							'posts_add_button'    => esc_html__( 'Add Menu', 'totc-layout-control' ),
+						),
+					);
+					break;
+
 				case 'posts-pages' :
 					$components['posts-pages'] = array(
 						'file' => self::$plugin_dir . '/components/posts-pages.php',
