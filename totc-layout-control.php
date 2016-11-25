@@ -220,6 +220,22 @@ class totclcInit {
 						),
 					);
 					break;
+
+				case 'map' :
+					if ( !is_plugin_active( 'business-profile/business-profile.php' ) ) {
+						break;
+					}
+					$components['map'] = array(
+						'file' => self::$plugin_dir . '/components/map.php',
+						'class' => 'TOTCLC_Component_Map',
+						'name' => esc_html__( 'Map', 'totc-layout-control' ),
+						'limit_posts' => 1,
+						'description' => esc_html__( 'Display a map of the address in your Business Profile.', 'totc-layout-control' ),
+						'i18n'          => array(
+							'description' => sprintf( esc_html__( 'To change your address, edit your %sBusiness Profile%s.', 'totc-layout-control' ), '<a href="' . esc_url( admin_url( 'admin.php?page=bpfwp-settings' ) ) . '">', '</a>' ),
+						),
+					);
+					break;
 			}
 		}
 
