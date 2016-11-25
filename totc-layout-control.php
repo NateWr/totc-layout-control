@@ -188,6 +188,22 @@ class totclcInit {
 						),
 					);
 					break;
+
+				case 'posts-pages' :
+					$components['posts-pages'] = array(
+						'file' => self::$plugin_dir . '/components/posts-pages.php',
+						'class' => 'TOTCLC_Component_Pages',
+						'name' => esc_html__( 'Page', 'totc-layout-control' ),
+						'limit_posts' => 1,
+						'description' => esc_html__( 'Display a page title and excerpt.', 'totc-layout-control' ),
+						'i18n' =>  array(
+							'posts_loading'       => esc_html__( 'Loading', 'totc-layout-control' ),
+							'posts_remove_button' => esc_html__( 'Remove', 'totc-layout-control' ),
+							'placeholder'         => esc_html__( 'No page selected.', 'totc-layout-control' ),
+							'posts_add_button'    => esc_html__( 'Add Page', 'totc-layout-control' ),
+						),
+					);
+					break;
 			}
 		}
 
