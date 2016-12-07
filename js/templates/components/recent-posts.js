@@ -12,7 +12,6 @@
 	</label>
 	<label>
 		<span class="customize-control-title"><?php echo $this->i18n['number_label']; ?></span>
-		<# console.log(data.model); #>
 		<select data-clc-setting-link="number">
 			<# for ( var i = 1; i <= data.model.get( 'limit_posts' ); i++ ) { #>
 				<option value="{{ i }}"<# if ( i === data.model.get( 'number' ) ) { #> selected<# } #>>{{ i }}</option>
