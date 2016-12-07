@@ -286,6 +286,23 @@ class totclcInit {
 						),
 					);
 					break;
+
+				case 'upcoming-events' :
+					if ( !is_plugin_active( 'event-organiser/event-organiser.php' ) ) {
+						break;
+					}
+					$components['upcoming-events'] = array(
+						'file' => self::$plugin_dir . '/components/upcoming-events.php',
+						'class' => 'TOTCLC_Component_UpcomingEvents',
+						'name' => esc_html__( 'UpcomingEvents', 'totc-layout-control' ),
+						'limit_posts' => 10,
+						'description' => esc_html__( 'A list of your upcoming events.', 'totc-layout-control' ),
+						'i18n'          => array(
+							'title' => __( 'Title', 'totc-layout-control' ),
+							'number_label' => __( 'Number of events to show', 'totc-layout-control' ),
+						),
+					);
+					break;
 			}
 		}
 
@@ -448,7 +465,7 @@ class totclcInit {
 		$supports = get_theme_support( 'totc-layout-control' );
 
 		$defaults = array(
-			'components' => array( 'content-block', 'posts-reviews', 'posts-menus', 'posts-pages', 'opening-hours', 'map', 'booking-form', 'recent-posts' ),
+			'components' => array( 'content-block', 'posts-reviews', 'posts-menus', 'posts-pages', 'opening-hours', 'map', 'booking-form', 'recent-posts', 'upcoming-events' ),
 			'active_callback' => array( 'totclcInit', 'active_callback' ),
 			'control_title' => __( 'Homepage Editor', 'totc-layout-control' ),
 		);
