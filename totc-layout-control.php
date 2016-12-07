@@ -372,7 +372,7 @@ class totclcInit {
 		$supports = get_theme_support( 'totc-layout-control' );
 
 		$defaults = array(
-			'components' => array( 'content-block', 'posts-reviews' ),
+			'components' => array( 'content-block', 'posts-reviews', 'posts-menus', 'posts-pages', 'opening-hours', 'map' ),
 			'active_callback' => array( 'totclcInit', 'active_callback' ),
 			'control_title' => __( 'Homepage Editor', 'totc-layout-control' ),
 		);
@@ -381,7 +381,9 @@ class totclcInit {
 			return isset( $defaults[$setting] ) ? $defaults[$setting] : null;
 		}
 
-		$supports = reset( $supports );
+		if ( is_array( $supports ) ) {
+			$supports = reset( $supports );
+		}
 
 		if ( isset( $supports[$setting] ) ) {
 			return $supports[$setting];
