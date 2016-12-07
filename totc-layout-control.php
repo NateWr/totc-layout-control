@@ -294,12 +294,29 @@ class totclcInit {
 					$components['upcoming-events'] = array(
 						'file' => self::$plugin_dir . '/components/upcoming-events.php',
 						'class' => 'TOTCLC_Component_UpcomingEvents',
-						'name' => esc_html__( 'UpcomingEvents', 'totc-layout-control' ),
+						'name' => esc_html__( 'Upcoming Events', 'totc-layout-control' ),
 						'limit_posts' => 10,
 						'description' => esc_html__( 'A list of your upcoming events.', 'totc-layout-control' ),
 						'i18n'          => array(
 							'title' => __( 'Title', 'totc-layout-control' ),
 							'number_label' => __( 'Number of events to show', 'totc-layout-control' ),
+						),
+					);
+					break;
+
+				case 'locations' :
+					global $bpfwp_controller;
+					if ( isset( $bpfwp_controller ) && !$bpfwp_controller->settings->get_setting( 'multiple-locations' ) ) {
+						break;
+					}
+					$components['locations'] = array(
+						'file' => self::$plugin_dir . '/components/locations.php',
+						'class' => 'TOTCLC_Component_Locations',
+						'name' => esc_html__( 'Locations', 'totc-layout-control' ),
+						'limit_posts' => 10,
+						'description' => esc_html__( 'Show a map and contact details for each of your locations.', 'totc-layout-control' ),
+						'i18n'          => array(
+							'description' => sprintf( esc_html__( 'To edit your locations or add new ones, visit the %sLocations%s page.', 'totc-layout-control' ), '<a href="' . esc_url( admin_url( 'edit.php?post_type=location' ) ) . '">', '</a>' ),
 						),
 					);
 					break;
@@ -465,7 +482,7 @@ class totclcInit {
 		$supports = get_theme_support( 'totc-layout-control' );
 
 		$defaults = array(
-			'components' => array( 'content-block', 'posts-reviews', 'posts-menus', 'posts-pages', 'opening-hours', 'map', 'booking-form', 'recent-posts', 'upcoming-events' ),
+			'components' => array( 'content-block', 'posts-reviews', 'posts-menus', 'posts-pages', 'opening-hours', 'map', 'booking-form', 'recent-posts', 'upcoming-events', 'locations' ),
 			'active_callback' => array( 'totclcInit', 'active_callback' ),
 			'control_title' => __( 'Homepage Editor', 'totc-layout-control' ),
 		);
