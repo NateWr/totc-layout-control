@@ -116,6 +116,8 @@ class totclcInit {
 		add_filter( 'clc_component_control_template_dirs', array( $this, 'add_control_template_dir' ) );
 		add_action( 'customize_controls_enqueue_scripts', array( $this, 'enqueue_control_assets' ) );
 		add_action( 'customize_preview_init', array( $this, 'enqueue_preview_assets' ) );
+
+		include_once( self::$plugin_dir . '/includes/shortcodes.php' );
 	}
 
 	/**
@@ -267,6 +269,20 @@ class totclcInit {
 						'description' => esc_html__( 'The booking form for taking online reservations.', 'totc-layout-control' ),
 						'i18n'          => array(
 							'description' => sprintf( esc_html__( 'To configure your Booking Form, visit %sBookings > Settings%s.', 'totc-layout-control' ), '<a href="' . esc_url( admin_url( 'admin.php?page=rtb-settings' ) ) . '">', '</a>' ),
+						),
+					);
+					break;
+
+				case 'recent-posts' :
+					$components['recent-posts'] = array(
+						'file' => self::$plugin_dir . '/components/recent-posts.php',
+						'class' => 'TOTCLC_Component_RecentPosts',
+						'name' => esc_html__( 'Recent Posts', 'totc-layout-control' ),
+						'limit_posts' => 10,
+						'description' => esc_html__( 'A list of your most recent posts.', 'totc-layout-control' ),
+						'i18n'          => array(
+							'title' => __( 'Title', 'totc-layout-control' ),
+							'number_label' => __( 'Number of posts to show', 'totc-layout-control' ),
 						),
 					);
 					break;
@@ -432,7 +448,7 @@ class totclcInit {
 		$supports = get_theme_support( 'totc-layout-control' );
 
 		$defaults = array(
-			'components' => array( 'content-block', 'posts-reviews', 'posts-menus', 'posts-pages', 'opening-hours', 'map', 'booking-form' ),
+			'components' => array( 'content-block', 'posts-reviews', 'posts-menus', 'posts-pages', 'opening-hours', 'map', 'booking-form', 'recent-posts' ),
 			'active_callback' => array( 'totclcInit', 'active_callback' ),
 			'control_title' => __( 'Homepage Editor', 'totc-layout-control' ),
 		);
