@@ -392,6 +392,32 @@ class totclcInit {
 			$rtb_controller->register_assets();
 			rtb_enqueue_assets();
 		}
+
+		if ( class_exists( 'bpfwpInit' ) ) {
+			add_action( 'wp_footer', array( $this, 'load_bpfwp_map_handlers' ) );
+		}
+	}
+
+	/**
+	 * Print a hidden map using Business Profile's native functions to ensure
+	 * that the map handler is loaded and initialized properly. This is used by
+	 * the customizer to ensure that if a map is loaded in during customization,
+	 * it will update properly.
+	 *
+	 * @since 0.1.0
+	 */
+	public function load_bpfwp_map_handlers() {
+
+		if ( !function_exists( 'bpwfwp_print_map' ) ) {
+			return;
+		}
+		?>
+
+		<div style="display:none;">
+			<?php bpwfwp_print_map(); ?>
+		</div>
+
+		<?php
 	}
 
 	/**
