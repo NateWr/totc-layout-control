@@ -254,6 +254,22 @@ class totclcInit {
 						),
 					);
 					break;
+
+				case 'booking-form' :
+					if ( !is_plugin_active( 'restaurant-reservations/restaurant-reservations.php' ) ) {
+						break;
+					}
+					$components['booking-form'] = array(
+						'file' => self::$plugin_dir . '/components/booking-form.php',
+						'class' => 'TOTCLC_Component_BookingForm',
+						'name' => esc_html__( 'Booking Form', 'totc-layout-control' ),
+						'limit_posts' => 1,
+						'description' => esc_html__( 'The booking form for taking online reservations.', 'totc-layout-control' ),
+						'i18n'          => array(
+							'description' => sprintf( esc_html__( 'To configure your Booking Form, visit %sBookings > Settings%s.', 'totc-layout-control' ), '<a href="' . esc_url( admin_url( 'admin.php?page=rtb-settings' ) ) . '">', '</a>' ),
+						),
+					);
+					break;
 			}
 		}
 
@@ -356,8 +372,26 @@ class totclcInit {
 	 * @since 0.1.0
 	 */
 	public function enqueue_preview_assets() {
+
 		$min = SCRIPT_DEBUG ? '' : 'min.';
 		wp_enqueue_script( 'totclc-customizer-preview-js', self::$plugin_url . '/js/customizer-preview.' . $min . 'js', array( 'customize-preview', 'content-layout-preview-js' ), '0.1.0', true );
+
+		wp_localize_script(
+			'totclc-customizer-preview-js',
+			'totclc_preview',
+			array(
+				'i18n' => array(
+					'multiple_booking_forms' => __( 'You can only have one instance of the booking form on a page at once. Please remove any extra Booking Form components.', 'totc-layout-control' ),
+				),
+			)
+		);
+
+		// Enqueue assets from plugins when active
+		if ( function_exists( 'rtb_enqueue_assets' ) ) {
+			global $rtb_controller;
+			$rtb_controller->register_assets();
+			rtb_enqueue_assets();
+		}
 	}
 
 	/**
@@ -372,7 +406,7 @@ class totclcInit {
 		$supports = get_theme_support( 'totc-layout-control' );
 
 		$defaults = array(
-			'components' => array( 'content-block', 'posts-reviews', 'posts-menus', 'posts-pages', 'opening-hours', 'map' ),
+			'components' => array( 'content-block', 'posts-reviews', 'posts-menus', 'posts-pages', 'opening-hours', 'map', 'booking-form' ),
 			'active_callback' => array( 'totclcInit', 'active_callback' ),
 			'control_title' => __( 'Homepage Editor', 'totc-layout-control' ),
 		);
