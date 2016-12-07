@@ -4,7 +4,8 @@
  *
  * @since 0.1
  */
-if ( totcbase_bp_setting_exists( 'address' ) ) :
+global $bpfwp_controller;
+if ( isset( $bpfwp_controller ) && $bpfwp_controller->settings->get_setting( 'address' ) ) :
 ?>
 
 <div class="clc-wrapper clc-opening-hours">
