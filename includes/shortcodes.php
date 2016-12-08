@@ -26,7 +26,7 @@ function totclc_shortcode_recent_posts( $args = array() ) {
 
 	$widget_class_name = apply_filters(
 		'totclc_shortcode_recent_posts_widget_class',
-		class_exists( 'TotcBase_Widget_Recent_Posts' ) ? 'TotcBase_Widget_Recent_Posts' : 'WP_Widget_Recent_Posts'
+		class_exists( 'Totc_Widget_Recent_Posts' ) ? 'Totc_Widget_Recent_Posts' : 'WP_Widget_Recent_Posts'
 	);
 
 	ob_start();
