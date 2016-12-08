@@ -320,6 +320,21 @@ class totclcInit {
 						),
 					);
 					break;
+
+				case 'gallery' :
+					$components['gallery'] = array(
+						'file' => self::$plugin_dir . '/components/gallery.php',
+						'class' => 'CLC_Component_Gallery',
+						'name' => esc_html__( 'Photo Gallery', 'totc-layout-control' ),
+						'description' => esc_html__( 'A collection of images.', 'totc-layout-control' ),
+						'i18n' =>  array(
+							'image'                => esc_html__( 'Images', 'totc-layout-control' ),
+							'image_placeholder'    => esc_html__( 'No images selected', 'totc-layout-control' ),
+							'image_select_button'  => esc_html__( 'Select Images', 'totc-layout-control' ),
+							'image_change_button'  => esc_html__( 'Change Images', 'totc-layout-control' ),
+						),
+					);
+					break;
 			}
 		}
 
@@ -482,7 +497,19 @@ class totclcInit {
 		$supports = get_theme_support( 'totc-layout-control' );
 
 		$defaults = array(
-			'components' => array( 'content-block', 'posts-reviews', 'posts-menus', 'posts-pages', 'opening-hours', 'map', 'booking-form', 'recent-posts', 'upcoming-events', 'locations' ),
+			'components' => array(
+				'content-block',
+				'posts-reviews',
+				'posts-menus',
+				'posts-pages',
+				'opening-hours',
+				'map',
+				'booking-form',
+				'recent-posts',
+				'upcoming-events',
+				'locations',
+				'gallery',
+			),
 			'active_callback' => array( 'totclcInit', 'active_callback' ),
 			'control_title' => __( 'Homepage Editor', 'totc-layout-control' ),
 		);
