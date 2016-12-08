@@ -7,9 +7,11 @@
  */
 ?>
 <div class="clc-wrapper clc-posts-menus-<?php echo absint( count( $this->items ) ); ?>">
-	<?php foreach( $this->items as $post ) : ?>
-		<?php if ( empty( $post['ID'] ) ) { continue; } ?>
-		[fdm-menu id=<?php echo absint( $post['ID'] ); ?>]
-	<?php endforeach; ?>
+	<?php
+		foreach( $this->items as $post ) {
+			if ( empty( $post['ID'] ) ) { continue; }
+			echo '[fdm-menu id=' . absint( $post['ID'] ) . ']';
+		}
+	?>
 </div>
 <?php

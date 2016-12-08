@@ -8,9 +8,11 @@
 ?>
 
 <div class="clc-wrapper clc-posts-reviews-<?php echo absint( count( $this->items ) ); ?>">
-	<?php foreach( $this->items as $post ) : ?>
-		<?php if ( empty( $post['ID'] ) ) { continue; } ?>
-		[good-reviews review=<?php echo absint( $post['ID'] ); ?>]
-	<?php endforeach; ?>
+	<?php
+		foreach( $this->items as $post ) {
+			if ( empty( $post['ID'] ) ) { continue; }
+			echo '[good-reviews review=' . absint( $post['ID'] ) . ']';
+		}
+	?>
 </div>
 <?php
