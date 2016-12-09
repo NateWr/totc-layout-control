@@ -96,3 +96,53 @@ function totclc_shortcode_pages( $args = array() ) {
 	return ob_get_clean();
 }
 add_shortcode( 'totclc-pages', 'totclc_shortcode_pages' );
+
+/**
+* Print a list of all locations
+*
+* @since 0.1
+*/
+function totclc_shortcode_locations() {
+
+	global $bpfwp_controller;
+	if ( !isset( $bpfwp_controller ) || !$bpfwp_controller->settings->get_setting( 'multiple-locations' ) ) {
+		return '';
+	}
+
+	$post_query = new WP_Query( array( 'posts_per_page' => 100, 'post_type' => array( 'location' ) ) );
+
+	ob_start();
+
+	if ( $post_query->have_posts() ) : ?>
+		<div class="clc-wrapper clc-locations-<?php echo absint( $post_query->found_posts ); ?>">
+			<?php
+				while( $post_query->have_posts() ) : $post_query->the_post(); ?>
+					<article id="post-<?php echo (int) get_the_ID(); ?>" <?php post_class(); ?>>
+						<?php
+							bpwfwp_print_map( get_the_ID() );
+							echo bpwfwp_print_contact_card(
+								array(
+									'location'                  => get_the_ID(),
+									'show_name'					=> true,
+									'show_address'				=> true,
+									'show_get_directions'		=> true,
+									'show_phone'				=> true,
+									'show_contact'				=> true,
+									'show_opening_hours'		=> false,
+									'show_opening_hours_brief'	=> false,
+									'show_map'					=> false,
+								)
+							);
+						?>
+					</article>
+				<?php
+				endwhile;
+				wp_reset_query();
+			?>
+		</div>
+	<?php
+	endif;
+
+	return ob_get_clean();
+}
+add_shortcode( 'totclc-locations', 'totclc_shortcode_locations' );
