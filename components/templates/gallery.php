@@ -7,6 +7,6 @@
 ?>
 
 <div class="clc-wrapper clc-gallery">
-	[gallery link="file" ids=".<?php echo esc_attr( join( ',', $this->images ) ); ?>"]
+	[gallery link="file" ids="<?php echo esc_attr( join( ',', $this->images ) ); ?>"]
 </div>
 <?php
