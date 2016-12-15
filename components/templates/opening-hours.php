@@ -4,7 +4,7 @@
  *
  * @since 0.1
  */
-if ( totcbase_bp_setting_exists( 'opening-hours' ) ) :
+if ( function_exists( 'bpfwp_setting' ) && bpfwp_setting( 'opening-hours' ) ) :
 ?>
 
 <div class="clc-wrapper clc-opening-hours">
