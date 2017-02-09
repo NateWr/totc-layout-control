@@ -28,7 +28,7 @@
 		 * @since 0.1
 		 */
 		settingChanged: function( data ) {
-			if ( data.setting == 'number' ) {
+			if ( data.setting == 'number' || data.setting == 'show_date' ) {
 				this.load();
 			} else {
 				this.$el.find( '.' + data.setting ).html( data.val );

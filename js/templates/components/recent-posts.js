@@ -18,6 +18,10 @@
 			<# } #>
 		</select>
 	</label>
+	<label>
+		<input type="checkbox" value="1" data-clc-show-date-link="true"<# if ( data.model.get( 'show_date' ) ) { #> checked="checked"<# } #>>
+		<?php echo $this->i18n['show_date']; ?>
+	</label>
 </div>
 <div class="footer">
 	<a href="#" class="delete"><?php esc_html_e( CLC_Content_Layout_Control::$i18n['delete'] ); ?></a>

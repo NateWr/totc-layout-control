@@ -19,7 +19,7 @@ function totclc_shortcode_recent_posts( $args = array() ) {
 
 	$defaults = array(
 		'number' => 3,
-		'show_date' => true,
+		'show_date' => 0,
 	);
 
 	$atts = shortcode_atts( $defaults, $args, 'totclc-recent-posts' );

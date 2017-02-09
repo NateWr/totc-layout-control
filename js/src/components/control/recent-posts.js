@@ -18,6 +18,7 @@
 			'blur [data-clc-setting-link]': 'updateLinkedSetting',
 			'change [data-clc-setting-link]': 'updateLinkedSetting',
 			'keyup [data-clc-setting-link]': 'updateTextLive',
+			'change [data-clc-show-date-link]': 'updateShowDateSetting',
 			'reordered': 'reordered',
 		},
 
@@ -38,6 +39,24 @@
 				}
 			);
 		},
+
+		/**
+		 * Update the show_date setting
+		 *
+		 * This can't use the updateLinkedSetting helper because it passes the
+		 * value whether of a checkbox whether it's checked or not.
+		 *
+		 * @since 0.1
+		 */
+		updateShowDateSetting: function( event ) {
+			var val = $( event.target ).is( ':checked' );
+
+			if ( this.model.get( 'show_date' ) === val ) {
+				return;
+			}
+
+			this.model.set( { show_date: val } );
+		}
 	});
 
 } )( jQuery );

@@ -283,6 +283,7 @@ class totclcInit {
 						'i18n'          => array(
 							'title' => __( 'Title', 'totc-layout-control' ),
 							'number_label' => __( 'Number of posts to show', 'totc-layout-control' ),
+							'show_date' => __( 'Display the published date with each post.', 'totc-layout-control' ),
 						),
 					);
 					break;
