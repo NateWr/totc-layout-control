@@ -36,7 +36,7 @@ class TOTCLC_Component_RecentPosts extends CLC_Component {
 	 * @param int
 	 * @since 0.1
 	 */
-	public $show_date = false;
+	public $show_date = 0;
 
 
 	/**
@@ -67,7 +67,7 @@ class TOTCLC_Component_RecentPosts extends CLC_Component {
 			'id'             => isset( $val['id'] ) ? absint( $val['id'] ) : 0,
 			'number'         => isset( $val['number'] ) ? absint( $val['number'] ) : $this->number,
 			'title'          => isset( $val['title'] ) ? sanitize_text_field( $val['title'] ) : '',
-			'show_date'      => !empty( $val['show_date'] ),
+			'show_date'      => !empty( $val['show_date'] ) ? 1 : 0,
 			'order'          => isset( $val['order'] ) ? absint( $val['order'] ) : 0,
 			'type'           => $this->type, // Don't allow this to be modified
 		);

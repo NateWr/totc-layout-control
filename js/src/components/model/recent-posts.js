@@ -15,7 +15,7 @@
 				description:    '',
 				number:         3,
 				title:          '',
-				show_date:      false,
+				show_date:      0,
 				type:           'recent-posts',
 				order:          0
 			};

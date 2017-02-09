@@ -49,7 +49,7 @@
 		 * @since 0.1
 		 */
 		updateShowDateSetting: function( event ) {
-			var val = $( event.target ).is( ':checked' );
+			var val = $( event.target ).is( ':checked' ) ? 1 : 0;
 
 			if ( this.model.get( 'show_date' ) === val ) {
 				return;

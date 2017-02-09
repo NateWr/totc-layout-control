@@ -19,7 +19,7 @@
 		</select>
 	</label>
 	<label>
-		<input type="checkbox" value="1" data-clc-show-date-link="true"<# if ( data.model.get( 'show_date' ) ) { #> checked="checked"<# } #>>
+		<input type="checkbox" data-clc-show-date-link="true"<# if ( data.model.get( 'show_date' ) ) { #> checked="checked"<# } #>>
 		<?php echo $this->i18n['show_date']; ?>
 	</label>
 </div>
