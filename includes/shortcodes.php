@@ -80,13 +80,15 @@ function totclc_shortcode_pages( $args = array() ) {
 				<?php the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' ); ?>
 			</header><!-- .entry-header -->
 			<div class="entry-content">
-				<?php the_excerpt(); ?>
-				<a href="<?php the_permalink(); ?>" class="more">
-					<?php
-					    // Translators: 1 and 3 are an opening and closing <span> tag. 2 is the post title.
-					    printf( esc_html__( 'Read More%1$s about %2$s%3$s', 'totc-layout-control' ), '<span class="screen-reader-text">', esc_html( get_the_title() ), '</span>' );
-					?>
-				</a>
+				<?php echo wpautop( get_the_content( '' ) ); ?>
+				<div class="more">
+					<a href="<?php the_permalink(); ?>">
+						<?php
+							// Translators: 1 and 3 are an opening and closing <span> tag. 2 is the post title.
+							printf( esc_html__( 'Read More%1$s about %2$s%3$s', 'totc-layout-control' ), '<span class="screen-reader-text">', esc_html( get_the_title() ), '</span>' );
+						?>
+					</a>
+				</div>
 			</div><!-- .entry-content -->
 		</article><!-- #post-## -->
 	<?php endwhile; ?>
