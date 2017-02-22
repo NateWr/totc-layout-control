@@ -64,6 +64,7 @@
 			}
 
 			this.media.open();
+
 		},
 
 		/**
@@ -73,16 +74,10 @@
 		 */
 		initMedia: function() {
 			this.media = wp.media({
-				states: [
-					new wp.media.controller.Library({
-						library: wp.media.query({ type: 'image' }),
-						multiple: true,
-						date: false,
-					})
-				]
+				state: 'gallery-library',
+				frame: 'post',
 			});
-
-			this.media.on( 'select', _.bind( this.selectImage, this ) );
+			this.media.on( 'close', _.bind( this.selectImage, this ) );
 		},
 
 		/**
@@ -95,8 +90,7 @@
 			var attachments = [],
 				image_thumb_urls = [];
 
-
-			this.media.state().get( 'selection' ).each( function( model, i, collection ) {
+			this.media.states.get( {id: 'gallery-edit'} ).get( 'library' ).each( function( model, i, collection )  {
 
 				attachments.push( model.get( 'id') );
 
