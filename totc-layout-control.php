@@ -3,7 +3,7 @@
  * Plugin Name: Theme of the Crop Layout Control
  * Plugin URI: https://themeofthecrop.com
  * Description: Beautiful homepage layouts for themes from Theme of the Crop.
- * Version: 0.1.0
+ * Version: 0.9.0
  * Author: Theme of the Crop
  * Author URI: https://themeofthecrop.com
  * License:     GNU General Public License v2.0 or later
