@@ -8,6 +8,7 @@
  * Author URI: https://themeofthecrop.com
  * License:     GNU General Public License v2.0 or later
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
+ * GitHub URI: NateWr/totc-layout-control
  *
  * Text Domain: totc-layout-control
  * Domain Path: /languages/
@@ -541,3 +542,7 @@ function totclcInit() {
 	return totclcInit::instance();
 }
 add_action( 'plugins_loaded', 'totclcInit' );
+
+// Process updates from GitHub
+// @see https://github.com/facetWP/github-updater-lite
+include_once( dirname( __FILE__ ) . '/lib/github-updater-lite/github-updater.php' );

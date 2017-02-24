@@ -1,3 +1,6 @@
 [submodule "lib/content-layout-control"]
 	path = lib/content-layout-control
 	url = git@github.com:NateWr/content-layout-control.git
+[submodule "lib/github-updater-lite"]
+	path = lib/github-updater-lite
+	url = git@github.com:NateWr/github-updater-lite.git
