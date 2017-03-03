@@ -6,5 +6,10 @@ For more information, [contact me here](https://themeofthecrop.com/contact).
 
 ## Changelog
 
+### 0.9.1 (2017-03-03)
+* Fix fatal error when checking is_plugin_active
+* Fix location component's conditional check
+* Add .pot file for translations
+
 ### 0.9 (2017-02-24)
 * Initial release
