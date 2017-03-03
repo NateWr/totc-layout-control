@@ -8,32 +8,6 @@ module.exports = function(grunt) {
 		// Load grunt project configuration
 		pkg: grunt.file.readJSON('package.json'),
 
-		// Configure less CSS compiler
-		less: {
-			build: {
-				options: {
-					ieCompat: true
-				},
-				files: {
-					'css/style.css': [
-						'less/style.less',
-						'less/style-*.less'
-					]
-				}
-			}
-		},
-
-		cssmin: {
-			build: {
-				files: [
-					{
-						src: 'style.css',
-						dest: 'style.min.css',
-					}
-				]
-			}
-		},
-
 		// Configure JSHint
 		jshint: {
 			test: {
@@ -72,10 +46,6 @@ module.exports = function(grunt) {
 
 		// Watch for changes on some files and auto-compile them
 		watch: {
-			less: {
-				files: ['less/**/*.less'],
-				tasks: ['less', 'cssmin']
-			},
 			js: {
 				files: ['js/src/**/*.js'],
 				tasks: ['jshint', 'concat', 'uglify']
@@ -120,15 +90,13 @@ module.exports = function(grunt) {
 
 	grunt.loadNpmTasks('grunt-contrib-compress');
 	grunt.loadNpmTasks('grunt-contrib-concat');
-	grunt.loadNpmTasks('grunt-contrib-cssmin');
 	grunt.loadNpmTasks('grunt-contrib-jshint');
-	grunt.loadNpmTasks('grunt-contrib-less');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-wp-i18n');
 
 	grunt.registerTask('default', ['watch']);
-	grunt.registerTask('build', ['less', 'cssmin', 'jshint', 'concat', 'uglify']);
+	grunt.registerTask('build', ['jshint', 'concat', 'uglify']);
 	grunt.registerTask('package', ['build', 'compress']);
 
 };
