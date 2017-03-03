@@ -128,6 +128,7 @@ class totclcInit {
 	 * @since 0.1.0
 	 */
 	public function register_components( $components ) {
+		include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 
 		$supported_components = $this->get_theme_support( 'components' );
 
