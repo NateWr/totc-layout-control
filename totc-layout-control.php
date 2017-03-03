@@ -309,7 +309,7 @@ class totclcInit {
 
 				case 'locations' :
 					global $bpfwp_controller;
-					if ( isset( $bpfwp_controller ) && !$bpfwp_controller->settings->get_setting( 'multiple-locations' ) ) {
+					if ( !isset( $bpfwp_controller ) || !$bpfwp_controller->settings->get_setting( 'multiple-locations' ) ) {
 						break;
 					}
 					$components['locations'] = array(
