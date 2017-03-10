@@ -24,12 +24,28 @@ if ( !class_exists( 'CLC_Component_Gallery' ) ) {
 		public $images = array();
 
 		/**
+		 * Columns (gallery shortcode columns attribute)
+		 *
+		 * @param int
+		 * @since 0.1
+		 */
+		public $columns = 5;
+
+		/**
+		 * Image size to use for thumbnails
+		 *
+		 * @param string
+		 * @since 0.1
+		 */
+		public $size = 'medium';
+
+		/**
 		 * Settings expected by this component
 		 *
 		 * @param array Setting keys
 		 * @since 0.1
 		 */
-		public $settings = array( 'images' );
+		public $settings = array( 'images', 'columns', 'size' );
 
 		/**
 		 * Sanitize settings
@@ -43,6 +59,8 @@ if ( !class_exists( 'CLC_Component_Gallery' ) ) {
 			return array(
 				'id'             => isset( $val['id'] ) ? absint( $val['id'] ) : 0,
 				'images'         => isset( $val['images'] ) ? array_map( 'absint', $val['images'] ) : $this->images,
+				'columns'        => isset( $val['columns'] ) ? absint( $val['columns'] ) : 5,
+				'size'           => isset( $val['size'] ) ? sanitize_text_field( $val['size'] ) : 'medium',
 				'order'          => isset( $val['order'] ) ? absint( $val['order'] ) : 0,
 				'type'           => $this->type, // Don't allow this to be modified
 			);

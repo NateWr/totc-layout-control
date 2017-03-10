@@ -88,9 +88,10 @@
 		 */
 		selectImage: function() {
 			var attachments = [],
-				image_thumb_urls = [];
+				image_thumb_urls = [],
+				library = this.media.states.get( {id: 'gallery-edit'} ).get( 'library' );
 
-			this.media.states.get( {id: 'gallery-edit'} ).get( 'library' ).each( function( model, i, collection )  {
+			library.each( function( model, i, collection )  {
 
 				attachments.push( model.get( 'id') );
 
@@ -104,7 +105,11 @@
 			} );
 
 			this.image_thumb_urls = image_thumb_urls;
-			this.model.set({ images: attachments });
+			this.model.set({
+				images: attachments,
+				columns: library.gallery.get('columns'),
+				size: library.gallery.get('size'),
+			});
 			this.render();
 			wp.customize.previewer.send( 'component-changed.clc', this.model );
 		},

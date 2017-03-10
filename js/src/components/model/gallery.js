@@ -15,6 +15,8 @@
 				description:    '',
 				type:           'gallery',
 				images:         [],
+				columns:        5,
+				size:           'medium',
 				order:          0
 			};
 		}
