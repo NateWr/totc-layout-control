@@ -6,6 +6,11 @@ For more information, [contact me here](https://themeofthecrop.com/contact).
 
 ## Changelog
 
+### 0.9.2 (2017-03-13)
+* Add post editing restrictions for posts under layout control
+* Add gallery column and size attribute support
+* Update content-layout-control lib
+
 ### 0.9.1 (2017-03-03)
 * Fix fatal error when checking is_plugin_active
 * Fix location component's conditional check
