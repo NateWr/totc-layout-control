@@ -2,9 +2,9 @@
 # This file is distributed under the GNU General Public License v2.0 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Theme of the Crop Layout Control 0.9.1\n"
+"Project-Id-Version: Theme of the Crop Layout Control 0.9.2\n"
 "Report-Msgid-Bugs-To: https://themeofthecrop.com\n"
-"POT-Creation-Date: 2017-03-03 14:56:44+00:00\n"
+"POT-Creation-Date: 2017-03-13 16:11:09+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -27,274 +27,282 @@ msgstr ""
 msgid "Open/close this component"
 msgstr ""
 
-#: totc-layout-control.php:142
+#: totc-layout-control.php:146
 msgid "Content Block"
 msgstr ""
 
-#: totc-layout-control.php:143
+#: totc-layout-control.php:147
 msgid "A simple content block with an image, title, text and links."
 msgstr ""
 
-#: totc-layout-control.php:145 totc-layout-control.php:286
-#: totc-layout-control.php:304
+#: totc-layout-control.php:149 totc-layout-control.php:290
+#: totc-layout-control.php:308
 msgid "Title"
 msgstr ""
 
-#: totc-layout-control.php:146
+#: totc-layout-control.php:150
 msgid "Content"
 msgstr ""
 
-#: totc-layout-control.php:147
+#: totc-layout-control.php:151
 msgid "Image"
 msgstr ""
 
-#: totc-layout-control.php:148
+#: totc-layout-control.php:152
 msgid "No image selected"
 msgstr ""
 
-#: totc-layout-control.php:149
+#: totc-layout-control.php:153
 msgid "Image Position"
 msgstr ""
 
-#: totc-layout-control.php:150
+#: totc-layout-control.php:154
 msgid "Left"
 msgstr ""
 
-#: totc-layout-control.php:151
+#: totc-layout-control.php:155
 msgid "Right"
 msgstr ""
 
-#: totc-layout-control.php:152
+#: totc-layout-control.php:156
 msgid "Select Image"
 msgstr ""
 
-#: totc-layout-control.php:153
+#: totc-layout-control.php:157
 msgid "Change Image"
 msgstr ""
 
-#: totc-layout-control.php:154 totc-layout-control.php:157
-#: totc-layout-control.php:171 totc-layout-control.php:189
-#: totc-layout-control.php:207 totc-layout-control.php:223
+#: totc-layout-control.php:158 totc-layout-control.php:161
+#: totc-layout-control.php:175 totc-layout-control.php:193
+#: totc-layout-control.php:211 totc-layout-control.php:227
 msgid "Remove"
 msgstr ""
 
-#: totc-layout-control.php:155
+#: totc-layout-control.php:159
 msgid "Links"
 msgstr ""
 
-#: totc-layout-control.php:156 totc-layout-control.php:385
+#: totc-layout-control.php:160 totc-layout-control.php:389
 msgid "Add Link"
 msgstr ""
 
-#: totc-layout-control.php:166
+#: totc-layout-control.php:170
 msgid "Posts"
 msgstr ""
 
-#: totc-layout-control.php:167
+#: totc-layout-control.php:171
 msgid "Display one or more posts."
 msgstr ""
 
-#: totc-layout-control.php:170 totc-layout-control.php:188
-#: totc-layout-control.php:206 totc-layout-control.php:222
+#: totc-layout-control.php:174 totc-layout-control.php:192
+#: totc-layout-control.php:210 totc-layout-control.php:226
 msgid "Loading"
 msgstr ""
 
-#: totc-layout-control.php:172
+#: totc-layout-control.php:176
 msgid "No post selected."
 msgstr ""
 
-#: totc-layout-control.php:173
+#: totc-layout-control.php:177
 msgid "Add Post"
 msgstr ""
 
-#: totc-layout-control.php:185
+#: totc-layout-control.php:189
 msgid "Reviews"
 msgstr ""
 
-#: totc-layout-control.php:186
+#: totc-layout-control.php:190
 msgid "Display one or more reviews."
 msgstr ""
 
-#: totc-layout-control.php:190
+#: totc-layout-control.php:194
 msgid "No review selected."
 msgstr ""
 
-#: totc-layout-control.php:191
+#: totc-layout-control.php:195
 msgid "Add Review"
 msgstr ""
 
-#: totc-layout-control.php:203
+#: totc-layout-control.php:207
 msgid "Restaurant Menu"
 msgstr ""
 
-#: totc-layout-control.php:204
+#: totc-layout-control.php:208
 msgid "Display your restaurant menu."
 msgstr ""
 
-#: totc-layout-control.php:208
+#: totc-layout-control.php:212
 msgid "No menu selected."
 msgstr ""
 
-#: totc-layout-control.php:209
+#: totc-layout-control.php:213
 msgid "Add Menu"
 msgstr ""
 
-#: totc-layout-control.php:218
+#: totc-layout-control.php:222
 msgid "Page"
 msgstr ""
 
-#: totc-layout-control.php:220
+#: totc-layout-control.php:224
 msgid "Display a page title and excerpt."
 msgstr ""
 
-#: totc-layout-control.php:224
+#: totc-layout-control.php:228
 msgid "No page selected."
 msgstr ""
 
-#: totc-layout-control.php:225
+#: totc-layout-control.php:229
 msgid "Add Page"
 msgstr ""
 
-#: totc-layout-control.php:237
+#: totc-layout-control.php:241
 msgid "Opening Hours"
 msgstr ""
 
-#: totc-layout-control.php:239
+#: totc-layout-control.php:243
 msgid "Display the opening hours from your Business Profile."
 msgstr ""
 
-#: totc-layout-control.php:241
+#: totc-layout-control.php:245
 msgid "To change your opening hours, edit your %sBusiness Profile%s."
 msgstr ""
 
-#: totc-layout-control.php:253
+#: totc-layout-control.php:257
 msgid "Map"
 msgstr ""
 
-#: totc-layout-control.php:255
+#: totc-layout-control.php:259
 msgid "Display a map of the address in your Business Profile."
 msgstr ""
 
-#: totc-layout-control.php:257
+#: totc-layout-control.php:261
 msgid "To change your address, edit your %sBusiness Profile%s."
 msgstr ""
 
-#: totc-layout-control.php:269
+#: totc-layout-control.php:273
 msgid "Booking Form"
 msgstr ""
 
-#: totc-layout-control.php:271
+#: totc-layout-control.php:275
 msgid "The booking form for taking online reservations."
 msgstr ""
 
-#: totc-layout-control.php:273
+#: totc-layout-control.php:277
 msgid "To configure your Booking Form, visit %sBookings > Settings%s."
 msgstr ""
 
-#: totc-layout-control.php:282
+#: totc-layout-control.php:286
 msgid "Recent Posts"
 msgstr ""
 
-#: totc-layout-control.php:284
+#: totc-layout-control.php:288
 msgid "A list of your most recent posts."
 msgstr ""
 
-#: totc-layout-control.php:287
+#: totc-layout-control.php:291
 msgid "Number of posts to show"
 msgstr ""
 
-#: totc-layout-control.php:288
+#: totc-layout-control.php:292
 msgid "Display the published date with each post."
 msgstr ""
 
-#: totc-layout-control.php:300
+#: totc-layout-control.php:304
 msgid "Upcoming Events"
 msgstr ""
 
-#: totc-layout-control.php:302
+#: totc-layout-control.php:306
 msgid "A list of your upcoming events."
 msgstr ""
 
-#: totc-layout-control.php:305
+#: totc-layout-control.php:309
 msgid "Number of events to show"
 msgstr ""
 
-#: totc-layout-control.php:318
+#: totc-layout-control.php:322
 msgid "Locations"
 msgstr ""
 
-#: totc-layout-control.php:320
+#: totc-layout-control.php:324
 msgid "Show a map and contact details for each of your locations."
 msgstr ""
 
-#: totc-layout-control.php:322
+#: totc-layout-control.php:326
 msgid "To edit your locations or add new ones, visit the %sLocations%s page."
 msgstr ""
 
-#: totc-layout-control.php:331
+#: totc-layout-control.php:335
 msgid "Photo Gallery"
 msgstr ""
 
-#: totc-layout-control.php:332
+#: totc-layout-control.php:336
 msgid "A collection of images."
 msgstr ""
 
-#: totc-layout-control.php:334
+#: totc-layout-control.php:338
 msgid "Images"
 msgstr ""
 
-#: totc-layout-control.php:335
+#: totc-layout-control.php:339
 msgid "No images selected"
 msgstr ""
 
-#: totc-layout-control.php:336
+#: totc-layout-control.php:340
 msgid "Select Images"
 msgstr ""
 
-#: totc-layout-control.php:337
+#: totc-layout-control.php:341
 msgid "Change Images"
 msgstr ""
 
-#: totc-layout-control.php:381
+#: totc-layout-control.php:385
 msgid "Add Component"
 msgstr ""
 
-#: totc-layout-control.php:382
+#: totc-layout-control.php:386
 msgid "Edit"
 msgstr ""
 
-#: totc-layout-control.php:383
+#: totc-layout-control.php:387
 msgid "Close"
 msgstr ""
 
-#: totc-layout-control.php:384
+#: totc-layout-control.php:388
 msgid "Search content"
 msgstr ""
 
-#: totc-layout-control.php:386
+#: totc-layout-control.php:390
 msgid "URL"
 msgstr ""
 
-#: totc-layout-control.php:387
+#: totc-layout-control.php:391
 msgid "Link Text"
 msgstr ""
 
-#: totc-layout-control.php:388
+#: totc-layout-control.php:392
 msgid "Search existing content &rarr;"
 msgstr ""
 
-#: totc-layout-control.php:389
+#: totc-layout-control.php:393
 msgid "&larr; Back to link form"
 msgstr ""
 
-#: totc-layout-control.php:452
+#: totc-layout-control.php:483
 msgid ""
 "You can only have one instance of the booking form on a page at once. "
 "Please remove any extra Booking Form components."
 msgstr ""
 
-#: totc-layout-control.php:517
+#: totc-layout-control.php:549 totc-layout-control.php:652
 msgid "Homepage Editor"
+msgstr ""
+
+#: totc-layout-control.php:623
+msgid "Homepage"
+msgstr ""
+
+#: totc-layout-control.php:656
+msgid "Edit your homepage using the Homepage Editor in the Customizer."
 msgstr ""
 
 #. Plugin Name of the plugin/theme
