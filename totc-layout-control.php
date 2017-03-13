@@ -118,6 +118,10 @@ class totclcInit {
 		add_action( 'customize_controls_enqueue_scripts', array( $this, 'enqueue_control_assets' ) );
 		add_action( 'customize_preview_init', array( $this, 'enqueue_preview_assets' ) );
 
+		// Adjust homepage editing screen
+		add_action( 'admin_head', array( $this, 'maybe_control_post_edit' ) );
+		add_action( 'wpseo_metabox_prio', array( $this, 'maybe_move_yoast_metabox' ) );
+
 		include_once( self::$plugin_dir . '/includes/shortcodes.php' );
 	}
 
@@ -403,6 +407,33 @@ class totclcInit {
 	}
 
 	/**
+	 * A callback function fired in the admin post editing screen to determine
+	 * if the post being edited is the homepage
+	 *
+	 * @since 0.9.2
+	 */
+	static public function admin_active_callback( $post_id = null ) {
+
+		if ( !$post_id ) {
+			global $post;
+			if ( isset( $post ) && get_class( $post ) === 'WP_Post' ) {
+				$post_id = $post->ID;
+			}
+
+			if ( !$post_id ) {
+				return false;
+			}
+		}
+
+		$page_on_front = get_option( 'page_on_front' );
+		if ( $post_id === $page_on_front ) {
+			return true;
+		}
+
+		return false;
+	}
+
+	/**
 	 * Add the directory for this plugin's component render templates
 	 *
 	 * @param array $dirs List of dirs to search in
@@ -514,6 +545,7 @@ class totclcInit {
 				'gallery',
 			),
 			'active_callback' => array( 'totclcInit', 'active_callback' ),
+			'admin_active_callback' => array( 'totclcInit', 'admin_active_callback' ),
 			'control_title' => __( 'Homepage Editor', 'totc-layout-control' ),
 		);
 
@@ -530,6 +562,122 @@ class totclcInit {
 		} elseif ( isset( $defaults[$setting] ) ) {
 			return $defaults[$setting];
 		}
+	}
+
+	/**
+	 * Maybe override the post editing screen for the homepage
+	 *
+	 * Hide or remove metaboxes from the homepage editing screen and add a
+	 * metabox to point users to the customizer.
+	 *
+	 * @since 0.9.2
+	 */
+	public function maybe_control_post_edit() {
+
+		$admin_active_callback = $this->get_theme_support( 'admin_active_callback' );
+		if ( !call_user_func( $admin_active_callback ) ) {
+			return;
+		}
+
+		$override = apply_filters( 'totclc_enable_post_editor_override', true );
+		if ( !$override ) {
+			return;
+		}
+
+		global $post;
+
+		remove_post_type_support( $post->post_type, 'revisions' );
+		remove_meta_box( 'pageparentdiv', 'page', 'side' );
+		remove_meta_box( 'authordiv', 'page', 'normal' );
+		remove_meta_box( 'postcustom', 'page', 'normal' );
+		remove_meta_box( 'postexcerpt', 'page', 'normal' );
+		remove_meta_box( 'commentsdiv', 'page', 'normal' );
+		remove_meta_box( 'postimagediv', 'page', 'side' );
+		remove_meta_box( 'trackbacksdiv', 'page', 'normal' );
+		remove_meta_box( 'commentsdiv', 'page', 'normal' );
+		remove_meta_box( 'commentstatusdiv', 'page', 'normal' );
+		remove_meta_box( 'revisionsdiv', 'page', 'normal' );
+		remove_meta_box( 'slugdiv', 'page', 'normal' );
+		remove_meta_box( 'wp_featherlight_options', 'page', 'side' );
+		remove_meta_box( 'ninja_forms_selector', 'page', 'side' );
+		remove_meta_box( 'nf_admin_metaboxes_appendaform', 'page', 'side' );
+
+		// If Yoast SEO is not active, we can remove a couple other items
+		if ( !defined( 'WPSEO_VERSION' ) ) {
+			remove_post_type_support( $post->post_type, 'editor' );
+			remove_meta_box( 'submitdiv', 'page', 'side' );
+			remove_meta_box( 'slugdiv', 'page', 'normal' );
+			remove_meta_box( 'wpseo_meta', 'page', 'normal' );
+			$metabox_position = 'side';
+
+		} else {
+			// Hide the post editor from view so the user can't make changes
+			if ( apply_filters( 'totclc_hide_post_editor_css', true ) ) {
+				echo '<style type="text/css">#postdivrich { display: none; }</style>';
+			}
+			$metabox_position = 'normal';
+		}
+
+		add_meta_box(
+			'totclc_edit_notice',
+			esc_html__( 'Homepage', 'totc-layout-control' ),
+			array( $this, 'print_post_override_meta_box' ),
+			null,
+			$metabox_position,
+			'high'
+		);
+	}
+
+	/**
+	 * Print a small manual meta box under the post title which includes a
+	 * link to edit the post in the customizer.
+	 *
+	 * @since 0.9.2
+	 */
+	public function print_post_override_meta_box() {
+
+		global $post;
+
+		$args = array(
+			'url' => get_permalink( $post ),
+			'return' => get_edit_post_link( $post->ID, 'raw' ),
+			'clc_onload_focus_control' => '1',
+		);
+		$url = admin_url( 'customize.php' ) . '?' . http_build_query( $args );
+
+		?>
+
+			<p>
+				<a class="button-primary" href="<?php echo esc_url( $url ); ?>">
+					<?php esc_html_e( 'Homepage Editor', 'totc-layout-control' ); ?>
+				</a>
+			</p>
+			<p class="description">
+				<?php esc_html_e( 'Edit your homepage using the Homepage Editor in the Customizer.', 'totc-layout-control' ); ?>
+			</p>
+
+		<?php
+	}
+
+	/**
+	 * Maybe move the Yoast SEO metabox so that the homepage editor metabox
+	 * appears above it
+	 *
+	 * @since 0.9.2
+	 */
+	public function maybe_move_yoast_metabox( $priority ) {
+
+		$admin_active_callback = $this->get_theme_support( 'admin_active_callback' );
+		if ( !call_user_func( $admin_active_callback ) ) {
+			return $priority;
+		}
+
+		$override = apply_filters( 'totclc_enable_post_editor_override', true );
+		if ( !$override ) {
+			return $priority;
+		}
+
+		return 'default';
 	}
 }
 
